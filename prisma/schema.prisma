@@ -1,0 +1,17 @@
+// ! prisma generate が生成するファイルは TypeScript の型補完などで重要な役割を持つため、
+// ! prisma.schema ファイルを変更した際には、逐次npx prisma generateを実行するのが良いでしょう。
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./data/dev.db"
+}
+
+model Task {
+  id  Int @id @default(autoincrement())
+  title String  @unique
+  due_on  DateTime?
+  is_done Boolean @default(false)
+}
